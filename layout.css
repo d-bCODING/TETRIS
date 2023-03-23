@@ -1,0 +1,180 @@
+body {
+    background-color: #222222;
+}
+
+.user-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(100% / 3);
+    height: 961px;
+}
+
+.user-container .user-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user-container .user-wrapper .gender-img {
+    width: 71px;
+    height: 129px;
+    margin: 0 auto;
+    background: url("./images/man.png") no-repeat center center;
+    margin-bottom: 40px;
+}
+
+.user-container .user-wrapper .user-info {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+.user-container .user-wrapper .user-info p:first-of-type {
+    margin-bottom: 10px;
+}
+
+.user-container .user-wrapper .user-info .user-name {
+    font-weight: bold;
+}
+
+/* ---------------------------------playing-container------------------------ */
+
+.playing-container {
+    width: 640px;
+    height: 961px;
+    background-color: teal;
+    margin: 0 auto;
+    border: 5px solid white;
+    border-bottom: 6px solid white;
+    box-sizing: border-box;
+}
+
+.playing-container .d11 {
+    /* display: inline-block; */
+    float: left;
+    width: 45px;
+    height: 45px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-right: 0px;
+}
+
+/* ----------------------------------score-container------------------------- */
+
+.score-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100% / 3);
+    height: 961px;
+}
+
+.score-container .next-block {
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    border: 5px solid white;
+    box-sizing: border-box;
+    border-left: 0px solid #000;
+}
+
+.score-container .next-block p {
+    font-weight: bold;
+    font-size: 25px;
+    height: 50px;
+    line-height: 45px;
+    border-bottom: 5px solid white;
+    box-sizing: border-box;
+    color: teal;
+}
+
+.score-container .score-wrapper {
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.score-container .score-wrapper .score-title {
+    color: white;
+    height: 80px;
+    line-height: 75px;
+    font-size: 25px;
+    font-weight: bold;
+    border: 5px solid white;
+    box-sizing: border-box;
+    border-bottom: 0px;
+}
+
+.score-container .score-wrapper .current-score {
+    color: white;
+    height: 170px;
+    line-height: 160px;
+    font-size: 70px;
+    font-weight: bold;
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+.score-container .prev-score {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+    width: 90%;
+    height: 300px;
+    border: 5px solid white;
+
+    box-sizing: border-box;
+}
+
+.score-container .prev-score .prev-title {
+    text-align: center;
+    height: 50px;
+    border-bottom: 5px solid white;
+    line-height: 45px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.score-container .prev-score p {
+    height: calc((100% - 50px)/5);
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+}
+
+.score-container .prev-score p:nth-child(n+1) {
+    line-height: 50px;
+    font-weight: bold;
+    color: white;
+}
+
+.score-container .prev-score p span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.score-container .prev-score p span:nth-of-type(2) {
+    display: inline-block;
+    width: 500px;
+    text-align: center;
+}
+
+.score-container .prev-score p:nth-of-type(2) span:nth-of-type(1) {
+    color: red;
+}
+
+.score-container .prev-score p:nth-of-type(3) span:nth-of-type(1) {
+    color: yellowgreen;
+}
+
+.score-container .prev-score p:nth-of-type(4) span:nth-of-type(1) {
+    color: burlywood;
+}
