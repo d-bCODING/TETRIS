@@ -51,16 +51,16 @@ body {
     border: 5px solid white;
     border-bottom: 6px solid white;
     box-sizing: border-box;
-    background: url("./images/background.png") no-repeat bottom 0px left 0px ;
+    background: url("./images/background.png") no-repeat bottom 0px left 0px;
 }
 
-.playing-container .block-wrapper .block-list{
+.playing-container .block-wrapper .block-list {
     position: absolute;
     left: 0;
     bottom: 1px;
 }
 
-.playing-container .block-wrapper .block-list li ul li{
+.playing-container .block-wrapper .block-list li ul li {
     float: left;
     width: 62px;
     height: 62px;
@@ -70,11 +70,11 @@ body {
     color: white;
 }
 
-.playing-container .block-wrapper .block-list li ul li.on{
+.playing-container .block-wrapper .block-list li ul li.on {
     background-color: teal;
 }
 
-.playing-container .block-wrapper .block-list li ul li:last-of-type{
+.playing-container .block-wrapper .block-list li ul li:last-of-type {
     margin-right: 0px;
 }
 
