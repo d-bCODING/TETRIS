@@ -6,8 +6,11 @@ var click2 = document.querySelector('.column14 ul .row10');
 var click3 = document.querySelector('.column13 ul .row10');
 var click4 = document.querySelector('.column12 ul .row10');
 
+//1자바이자 기준
 var barTP = 0;
 var barLP = 4;
+
+//1자바
 var bar = [
     columns[barTP].children[0].children[barLP],
     columns[barTP + 1].children[0].children[barLP],
@@ -29,21 +32,35 @@ var barL = [
     columns[barTP + 2].children[0].children[barLP + 1]
 ]
 
+var barL2 = [
+    columns[barTP].children[0].children[barLP],
+    columns[barTP + 1].children[0].children[barLP],
+    columns[barTP + 2].children[0].children[barLP],
+    columns[barTP + 2].children[0].children[barLP - 1]
+]
 
+console.log(barL2);
+// 도형별로 각자의 번호 매김, 해당 번호는 도형 모양 변경시 사용, 추후 삭제 가능성 있음.
+// var shape = 1;
+// for (let i = 0; i < bar.length; i++) {
+//     bar[i].classList.add('on');
+// }
 
-for (let i = 0; i < bar.length; i++) {
-    bar[i].classList.add('on');
-}
-var shape = 1;
-
+// var shape = 2;
 // for (let i = 0; i < barL.length; i++) {
 //     barL[i].classList.add('on');
 // }
-// var shape = 2;
 
+var shape = 3;
+for (let i = 0; i < barL2.length; i++) {
+    barL2[i].classList.add('on');
+}
+
+//생성된 블록 객체 가져오기
 var moving = document.querySelectorAll('.on');
+console.log(moving);
 
-
+//ㅣ자바를 기준으로 해당 변수들을 통해서 다른 모양들 생성
 var a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = 0;
 if (moving[3].innerHTML == "12 - 5") { //1자 도형
     b = 1,
@@ -54,10 +71,18 @@ if (moving[3].innerHTML == "12 - 5") { //1자 도형
         c = 2,
         d = 2,
         h = 1
+        console.log("dd");
+} else if (moving[2].innerHTML == "13 - 4") { //문제발생, moving[3] 이랑 barL2[3]이 서로 안겹침.
+    b = 1,
+        c = 2,
+        d = 2,
+        h = -1
+        console.log("dd");
 }
 
-
+// 새로 생성된 도형 이후에 변경이나, 이동에 있어 새로 관여할 변수 생성
 var movingEl;
+//아래로 이동 버튼
 click1.addEventListener('click', function () {
     barTP++;
 
@@ -78,6 +103,7 @@ click1.addEventListener('click', function () {
     }
 })
 
+//왼쪽으로 이동 버튼
 click2.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
     for (let i = 0; i < moving.length; i++) {
@@ -99,6 +125,7 @@ click2.addEventListener('click', function () {
 
 })
 
+//오른쪽으로 이동 버튼
 click3.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
     for (let i = 0; i < moving.length; i++) {
@@ -120,7 +147,7 @@ click3.addEventListener('click', function () {
 
 })
 
-
+//모양 변경 버튼
 click4.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
     for (let i = 0; i < moving.length; i++) {
@@ -134,9 +161,7 @@ click4.addEventListener('click', function () {
         g = g + 1;
         d = d - 2;
         h = h + 2;
-    }
-
-    if (shape == 2) {
+    } else if (shape == 2) {
         a = a + 1;
         e = e - 1;
         c = c - 1;
