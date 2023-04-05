@@ -52,12 +52,13 @@ body {
     border-bottom: 6px solid white;
     box-sizing: border-box;
     background: url("./images/background.png") no-repeat bottom 0px left 0px;
+    overflow: hidden;
 }
 
 .playing-container .block-wrapper .block-list {
     position: absolute;
     left: 0;
-    bottom: 1px;
+    top: 4px;
 }
 
 .playing-container .block-wrapper .block-list li ul li {
@@ -71,6 +72,10 @@ body {
 }
 
 .playing-container .block-wrapper .block-list li ul li.on {
+    background-color: teal;
+}
+
+.playing-container .block-wrapper .block-list li ul li.stacked {
     background-color: teal;
 }
 
