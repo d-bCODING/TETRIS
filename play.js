@@ -81,27 +81,28 @@ click1.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
     var rowsAr = [];
     for (let i = 0; i < moving.length; i++) {
-        rowsAr[i] = moving[i].parentElement.parentElement.getAttribute('class').substring(6,8);
+        rowsAr[i] = moving[i].parentElement.parentElement.getAttribute('class').substring(6, 8);
     }
     rowsAr.sort((a, b) => a - b);
     //현재 도형에서 가장 밑 블록의 행 번호
     var minLimit = rowsAr[0];
-    console.log(minLimit);
 
-    for (let i = 0; i < moving.length; i++) {
-        moving[i].classList.remove('on');
-    }
-    
-    barTP++;
-    movingEl = [
-        rows[barTP + a].children[0].children[barLP + e],
-        rows[barTP + b].children[0].children[barLP + f],
-        rows[barTP + c].children[0].children[barLP + g],
-        rows[barTP + d].children[0].children[barLP + h]
-    ]
+    if (minLimit > 1) {
+        for (let i = 0; i < moving.length; i++) {
+            moving[i].classList.remove('on');
+        }
 
-    for (let i = 0; i < movingEl.length; i++) {
-        movingEl[i].classList.add('on');
+        barTP++;
+        movingEl = [
+            rows[barTP + a].children[0].children[barLP + e],
+            rows[barTP + b].children[0].children[barLP + f],
+            rows[barTP + c].children[0].children[barLP + g],
+            rows[barTP + d].children[0].children[barLP + h]
+        ]
+
+        for (let i = 0; i < movingEl.length; i++) {
+            movingEl[i].classList.add('on');
+        }
     }
 })
 
@@ -166,6 +167,7 @@ click3.addEventListener('click', function () {
 
 
 //모양 변경 버튼
+var flag = 0;
 click4.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
     for (let i = 0; i < moving.length; i++) {
@@ -174,18 +176,59 @@ click4.addEventListener('click', function () {
 
     //각 도형별로 모양 재설정
     if (shape == 1) {
-        a = a = 1;
-        e = e - 1;
-        c = c - 1;
-        g = g + 1;
-        d = d - 2;
-        h = h + 2;
+        if (flag == 0) {
+            console.log("왜");
+            a = a + 1;
+            e = e - 1;
+            c = c - 1;
+            g = g + 1;
+            d = d - 2;
+            h = h + 2;
+            flag = 1;
+        } else if (flag == 1) {
+            a = 0;
+            b = 1;
+            c = 2;
+            d = 3;
+            e = 0;
+            f = 0;
+            g = 0;
+            h = 0;
+            flag = 0;
+        }
     } else if (shape == 2) {
-        a = a + 1;
-        e = e - 1;
-        c = c - 1;
-        g = g + 1;
-        d = d - 2;
+        if (flag == 0) {
+            a = a + 1;
+            e = e - 1;
+            c = c - 1;
+            g = g + 1;
+            d = d - 2;
+            flag = 1;
+        } else if (flag == 1) {
+            a = a - 1;
+            b = b - 1;
+            g = g - 1;
+            d = d + 2;
+            h = h - 1;
+            flag = 2;
+        } else if (flag == 2) {
+            a = a + 2;
+            b = b + 1;
+            f = f - 1;
+            d = d - 1;
+            h = h + 1;
+            flag = 3;
+        } else if (flag == 3) {
+            a = 0;
+            b = 1;
+            c = 2;
+            d = 2;
+            e = 0;
+            f = 0;
+            g = 0;
+            h = 1;
+            flag = 0;
+        }
     } else if (shape == 3) {
         a = a + 1;
         e = e + 1;
@@ -193,6 +236,11 @@ click4.addEventListener('click', function () {
         g = g - 1;
         d = d - 2;
     }
+
+    console.log(barLP + e);
+    console.log(barLP + f);
+    console.log(barLP + g);
+    console.log(barLP + h);
 
     movingEl = [
         rows[barTP + a].children[0].children[barLP + e],
