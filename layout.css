@@ -52,7 +52,8 @@ body {
     border-bottom: 6px solid white;
     box-sizing: border-box;
     background: url("./images/background.png") no-repeat bottom 0px left 0px;
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* font-size: 0px; */
 }
 
 .playing-container .block-wrapper .block-list {

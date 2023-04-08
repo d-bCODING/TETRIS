@@ -79,15 +79,29 @@ var movingEl;
 //아래로 이동 버튼
 click1.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
-    var rowsAr = [];
+    var movingRowCls = []
     for (let i = 0; i < moving.length; i++) {
-        rowsAr[i] = moving[i].parentElement.parentElement.getAttribute('class').substring(6, 8);
+        movingRowCls.push(moving[i].classList[0])
     }
-    rowsAr.sort((a, b) => a - b);
-    //현재 도형에서 가장 밑 블록의 행 번호
-    var minLimit = rowsAr[0];
+    var canDown;
+    for (let i = 0; i < moving.length; i++) {
+        var downElCls = moving[i].parentElement.parentElement.nextElementSibling.nextElementSibling.childNodes[1].querySelector('.'+movingRowCls[i]).classList[1];
+        console.log(downElCls);
+        if (downElCls == "stacked") {
+            canDown = false;
+        }
+    }
+    console.log(canDown);
 
-    if (minLimit > 1) {
+    // var rowsAr = [];
+    // for (let i = 0; i < moving.length; i++) {
+    //     rowsAr[i] = moving[i].parentElement.parentElement.getAttribute('class').substring(6, 8);
+    // }
+    // rowsAr.sort((a, b) => a - b);
+    // //현재 도형에서 가장 밑 블록의 행 번호
+    // var minLimit = rowsAr[0];
+
+    if (!canDown) {
         for (let i = 0; i < moving.length; i++) {
             moving[i].classList.remove('on');
         }
@@ -170,6 +184,7 @@ click3.addEventListener('click', function () {
 var flag = 0;
 click4.addEventListener('click', function () {
     moving = document.querySelectorAll('.on');
+
     for (let i = 0; i < moving.length; i++) {
         moving[i].classList.remove('on');
     }
@@ -198,46 +213,94 @@ click4.addEventListener('click', function () {
         }
     } else if (shape == 2) {
         if (flag == 0) {
-            a = a + 1;
-            e = e - 1;
-            c = c - 1;
-            g = g + 1;
-            d = d - 2;
+            a += 1;
+            e -= 1;
+            c -= 1;
+            g += 1;
+            d -= 2;
             flag = 1;
         } else if (flag == 1) {
-            a = a - 1;
-            b = b - 1;
-            g = g - 1;
-            d = d + 2;
-            h = h - 1;
+            a += 1;
+            e += 1;
+            c -= 1;
+            g -= 1;
+            h -= 2;
             flag = 2;
         } else if (flag == 2) {
-            a = a + 2;
-            b = b + 1;
-            f = f - 1;
-            d = d - 1;
-            h = h + 1;
+            a -= 1;
+            e += 1;
+            c += 1;
+            g -= 1;
+            d += 2;
             flag = 3;
         } else if (flag == 3) {
-            a = 0;
-            b = 1;
-            c = 2;
-            d = 2;
-            e = 0;
-            f = 0;
-            g = 0;
-            h = 1;
+            a -= 1;
+            e -= 1;
+            c += 1;
+            g += 1;
+            h += 2;
             flag = 0;
         }
     } else if (shape == 3) {
-        a = a + 1;
-        e = e + 1;
-        c = c - 1;
-        g = g - 1;
-        d = d - 2;
+        if (flag == 0) {
+            a += 1;
+            e += 1;
+            c -= 1;
+            g -= 1;
+            d -= 2;
+            flag = 1;
+        } else if (flag == 1) {
+            a += 1;
+            e -= 1;
+            g += 1;
+            c -= 1;
+            h += 2;
+            flag = 2;
+        } else if (flag == 2) {
+            a -= 1;
+            e -= 1;
+            c += 1;
+            g += 1;
+            d += 2;
+            flag = 3;
+        } else if (flag == 3) {
+            a -= 1;
+            e += 1;
+            c += 1;
+            g -= 1;
+            h -= 2;
+            flag = 0;
+        }
+
     }
 
-    console.log(barLP + e);
+    //모양 변경시 블록이 화면 밖을 나가버리는 경우에 대비책
+    var rowsAr = [barTP + a, barTP + b, barTP + c, barTP + d];
+    var columnsAr = [barLP + e, barLP + f, barLP + g, barLP + h];
+    rowsAr.sort((a, b) => a - b);
+    columnsAr.sort((a, b) => a - b);
+    if (columnsAr[0] == -1) {
+        e += 1;
+        f += 1;
+        g += 1;
+        h += 1;
+    } else if (columnsAr[3] == 10) {
+        e -= 1;
+        f -= 1;
+        g -= 1;
+        h -= 1;
+    } else if (rowsAr[rowsAr.length - 1] >= 15) {
+        a -= 1;
+        b -= 1;
+        c -= 1;
+        d -= 1;
+    }
+
+    console.log("엥" + (barTP + a));
+    console.log(barTP + b);
+    console.log(barTP + c);
+    console.log(barTP + d);
+    console.log("웅" + (barLP + e));
     console.log(barLP + f);
     console.log(barLP + g);
     console.log(barLP + h);
